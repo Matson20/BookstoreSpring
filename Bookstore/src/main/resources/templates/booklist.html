@@ -10,7 +10,7 @@
 	<ul th:each="book : ${books}">
 		<li 
 		th:text="${book.title} + ' ' + ${book.author} + ' ' + ${book.year} + ' '
-		 ${book.isbn} + ' ' + ${book.price}">
+		 + ${book.isbn} + ' ' + ${book.price}">
 		</li>		
 	</ul>
 	

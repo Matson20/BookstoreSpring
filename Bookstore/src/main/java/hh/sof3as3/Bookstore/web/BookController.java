@@ -14,8 +14,8 @@ import hh.sof3as3.Bookstore.domain.Book;
 @Controller
 public class BookController {
 
-	List<Book> books = new ArrayList<Book>(); // Tyhjän listan luonti
 	
+	List<Book> books = new ArrayList<Book>(); // Tyhjän listan luonti
 	@GetMapping("/index")
 	public String getBooks(Model model) {
 		
