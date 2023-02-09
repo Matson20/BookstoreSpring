@@ -1,5 +1,6 @@
 package hh.sof3as3.Bookstore.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,7 @@ public class Book {
 	private Long id;
 	private String title;
 	private String author;
+	@Column(name="publishing_year")
 	private Integer year;
 	private String isbn;
 	private Integer price;
