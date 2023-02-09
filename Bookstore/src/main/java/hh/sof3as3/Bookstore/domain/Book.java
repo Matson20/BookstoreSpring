@@ -1,25 +1,30 @@
 package hh.sof3as3.Bookstore.domain;
 
-public class Book {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+
+public class Book {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	// atribuutit
+	private Long id;
 	private String title;
 	private String author;
-	private int year;
+	private Integer year;
 	private String isbn;
-	private int price;
+	private Integer price;
 	
 	// konstruktorit
 	public Book() {
-		super();
-		this.title = null;
-		this.author = null;
-		this.year = 0;
-		this.isbn = null;
-		this.price = 0;
+		
 	}
 	
-	public Book(String title, String author, int year, String isbn, int price) {
+	public Book(String title, String author, Integer year, String isbn, Integer price) {
 		super();
 		this.title = title;
 		this.author = author;
@@ -39,7 +44,7 @@ public class Book {
 		this.author = author;
 	}
 
-	public void setYear(int year) {
+	public void setYear(Integer year) {
 		this.year = year;
 	}
 
@@ -47,7 +52,7 @@ public class Book {
 		this.isbn = isbn;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 
@@ -62,7 +67,7 @@ public class Book {
 		return author;
 	}
 
-	public int getYear() {
+	public Integer getYear() {
 		return year;
 	}
 
@@ -70,7 +75,7 @@ public class Book {
 		return isbn;
 	}
 
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 
