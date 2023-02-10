@@ -58,11 +58,20 @@ public class Book {
 		this.price = price;
 	}
 
-	
 
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	// getterit
+
 	public String getTitle() {
 		return title;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public String getAuthor() {

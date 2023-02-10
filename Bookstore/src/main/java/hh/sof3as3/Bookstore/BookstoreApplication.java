@@ -1,5 +1,8 @@
 package hh.sof3as3.Bookstore;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +14,9 @@ import hh.sof3as3.Bookstore.domain.BookRepository;
 @SpringBootApplication
 public class BookstoreApplication {
 
+	// Näyttää taulujen datan consolessa
+	private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
+	
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
@@ -23,6 +29,11 @@ public class BookstoreApplication {
 		
 			repository.save(bookOne);
 			repository.save(bookTwo);
+			
+			log.info("show all books");
+			for (Book book : repository.findAll()) {
+				log.info(book.toString());
+			}
 		
 		};
 	}
