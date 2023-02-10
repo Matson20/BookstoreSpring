@@ -19,7 +19,7 @@ public class BookstoreApplication {
 	public CommandLineRunner demo(BookRepository repository) {
 		return (args) -> {
 			Book bookOne = new Book("Revelation Space", "Alastair Reynolds", 2000, "978 0 575 08309 7", 20);
-			Book bookTwo = new Book("The Dune", "Frank Herbert", 1956, "978 0 340 96019 6", 30);
+			Book bookTwo = new Book("The Dune", "Frank Herbert", 1965, "978 0 340 96019 6", 30);
 		
 			repository.save(bookOne);
 			repository.save(bookTwo);
