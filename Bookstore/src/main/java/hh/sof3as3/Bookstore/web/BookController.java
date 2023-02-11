@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,19 +28,25 @@ public class BookController {
 		return "booklist";
 	}
 	
-	
+	// Delete Book
 	 @GetMapping(value = "/delete/{id}")
 	    public String deleteStudent(@PathVariable("id") Long bookId, Model model) {
 	    	repository.deleteById(bookId);
 	        return "redirect:../booklist";
 	    }
 
-/* 
- * KESKEN. DELETE TOIMIMAAN ENSIN.
+	 // Add new book
 	@RequestMapping("/add")
 		public String addBook(Model model) {
 			model.addAttribute("book", new Book());
 			return "addbook";
 		}
-	 */
+	
+	// Save the new book
+	@PostMapping("/save")
+		public String savebook(Book book) {
+			repository.save(book);
+			return "redirect:booklist";
+	}
+	 
 }
