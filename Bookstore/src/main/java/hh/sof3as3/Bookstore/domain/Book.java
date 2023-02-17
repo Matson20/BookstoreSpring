@@ -19,14 +19,14 @@ public class Book {
 	@Column(name="publishing_year")
 	private Integer year;
 	private String isbn;
-	private Integer price;
+	private double price;
 	
 	// konstruktorit
 	public Book() {
 		
 	}
 	
-	public Book(String title, String author, Integer year, String isbn, Integer price) {
+	public Book(String title, String author, Integer year, String isbn, double price) {
 		super();
 		this.title = title;
 		this.author = author;
@@ -57,7 +57,7 @@ public class Book {
 		this.isbn = isbn;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -85,7 +85,7 @@ public class Book {
 		return isbn;
 	}
 
-	public Integer getPrice() {
+	public double getPrice() {
 		return price;
 	}
 

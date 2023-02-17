@@ -16,6 +16,7 @@
 		    <th>ISBN</th>
 		    <th>Year</th>
 		    <th></th>
+			<th></th>
 		</tr>  
     	<tr th:each = "book : ${books}">
     		<td th:text="${book.author}"></td>
@@ -23,9 +24,9 @@
     		<td th:text="${book.isbn}"></td>
     		<td th:text="${book.year}"></td>
  			<td><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>   
- 			<!-- Tästä tulee edit toiminto
- 			<td><a th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td> 
- 			 --> 		
+ 			
+ 			<td><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-success">Edit</a></td> 
+ 					
     	</tr>
      </table>
      <a href="/add" class="btn btn-success">Add Book</a>
