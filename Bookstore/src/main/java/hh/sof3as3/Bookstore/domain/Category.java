@@ -10,8 +10,8 @@ import javax.persistence.Id;
 public class Category {
     @Id // Creates id for column
     @GeneratedValue(strategy = GenerationType.AUTO) // Generates automatically a unique primary key
-    private Long categoryid;
-    @Column(name="category_name")
+    private Long id;
+    //@Column(name="category_name")
     private String name;
 
     // konstruktorit
@@ -25,16 +25,16 @@ public class Category {
     }
 
     // getterit
-    public Long getCategoryId() {
-        return categoryid;
+    public Long getId() {
+        return id;
     }
     public String getName() {
         return name;
     }
 
     // setterit
-    public void setCategoryId(Long categoryId) {
-        this.categoryid = categoryId;
+    public void setId(Long Id) {
+        this.id = Id;
     }
 
     public void setName(String name) {
@@ -43,7 +43,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return "categoryId=" + categoryid + ", name=" + name;
+        return "id=" + id + ", name=" + name;
     }
 
     
