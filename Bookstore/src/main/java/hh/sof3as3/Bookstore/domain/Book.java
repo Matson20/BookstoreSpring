@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,49 +22,32 @@ public class Book {
 	private Integer year;
 	private String isbn;
 	private double price;
+
+	@ManyToOne
+	@JoinColumn(name="categoryid")
+	private Category category;
 	
 	// konstruktorit
 	public Book() {
-		
+		super();
+		this.title = null;
+		this.author = null;
+		this.year = 0;
+		this.isbn = null;
+		this.price = 0.0;
+		this.category = null;
 	}
 	
-	public Book(String title, String author, Integer year, String isbn, double price) {
+	public Book(String title, String author, Integer year, String isbn, double price, Category category) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.year = year;
 		this.isbn = isbn;
 		this.price = price;
+		this.category = category;
 	}
 
-	
-	
-	// setterit
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-	public void setYear(Integer year) {
-		this.year = year;
-	}
-
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	
-	
 	// getterit
 
 	public String getTitle() {
@@ -89,12 +74,45 @@ public class Book {
 		return price;
 	}
 
-	// toString
-	@Override
-	public String toString() {
-		return "title=" + title + ", author=" + author + ", year=" + year + 
-				", isbn=" + isbn + ", price=" + price;
+	public Category getCategory() {
+		return category;
 	}
 	
+	
+	// setterit
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn
+				+ ", price=" + price + ", category=" + category + "]";
+	}
+
 	
 }

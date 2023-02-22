@@ -1,18 +1,25 @@
 package hh.sof3as3.Bookstore.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity // Represent a table in relational database
 public class Category {
     @Id // Creates id for column
     @GeneratedValue(strategy = GenerationType.AUTO) // Generates automatically a unique primary key
-    private Long id;
+    private Long categoryid;
     //@Column(name="category_name")
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    private List<Book> books;
 
     // konstruktorit
     public Category() {
@@ -25,29 +32,34 @@ public class Category {
     }
 
     // getterit
-    public Long getId() {
-        return id;
+    public Long getCategoryid() {
+        return categoryid;
     }
+
     public String getName() {
         return name;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
     // setterit
-    public void setId(Long Id) {
-        this.id = Id;
+    public void setCategoryid(Long categoryid) {
+        this.categoryid = categoryid;
     }
 
     public void setName(String name) {
         this.name = name;
     }
+    
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
 
     @Override
     public String toString() {
-        return "id=" + id + ", name=" + name;
+        return "categoryid=" + categoryid + ", name=" + name;
     }
-
-    
-
-    
 
 }
