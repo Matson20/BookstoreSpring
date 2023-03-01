@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity // Represent a table in relational database
 public class Category {
     @Id // Creates id for column
@@ -18,6 +20,7 @@ public class Category {
     //@Column(name="category_name")
     private String name;
 
+    @JsonIgnoreProperties ("category")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Book> books;
 

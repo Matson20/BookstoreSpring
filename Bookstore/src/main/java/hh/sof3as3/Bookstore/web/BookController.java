@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+import java.util.Optional;
 import hh.sof3as3.Bookstore.domain.Book;
 import hh.sof3as3.Bookstore.domain.BookRepository;
 import hh.sof3as3.Bookstore.domain.CategoryRepository;
@@ -24,10 +27,24 @@ public class BookController {
 	@Autowired
 	private CategoryRepository crepository;
 
+	/* MVC Methods
 	@RequestMapping(value="/booklist")
 	public String getBooks(Model model) {
 		model.addAttribute("books", repository.findAll());
 		return "booklist";
+	}
+	*/
+
+	// RESTful get all books
+	@GetMapping(value="/books")
+	public @ResponseBody List<Book> getBooks() {
+		return (List<Book>) repository.findAll();
+	}
+
+	// RESTful find book by ID
+	@GetMapping(value="/books/{id}")
+	public @ResponseBody Optional<Book> findBookREST(@PathVariable("id") Long bookId) {
+		return repository.findById(bookId);
 	}
 	
 	// Delete Book
