@@ -20,8 +20,9 @@ public class Category {
     //@Column(name="category_name")
     private String name;
 
-    @JsonIgnoreProperties ("category")
+   
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    @JsonIgnoreProperties ("category")
     private List<Book> books;
 
     // konstruktorit
@@ -29,7 +30,7 @@ public class Category {
         
     }
 
-    public Category( String name) {
+    public Category(String name) {
         super();
         this.name = name;
     }
