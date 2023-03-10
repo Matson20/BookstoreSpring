@@ -28,13 +28,13 @@ public class BookController {
 	@Autowired
 	private CategoryRepository crepository;
 
-	/* MVC Methods
+	
 	@RequestMapping(value="/booklist")
 	public String getBooks(Model model) {
 		model.addAttribute("books", repository.findAll());
 		return "booklist";
 	}
-	*/
+	
 
 	// RESTful get all books
 	@GetMapping(value="/books")
@@ -84,5 +84,9 @@ public class BookController {
 			return "editbook";
 	}
 	
+	@RequestMapping("/login")
+		public String login() {
+			return "login";
+		}
 	 
 }
