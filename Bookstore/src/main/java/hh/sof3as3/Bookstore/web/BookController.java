@@ -3,6 +3,7 @@ package hh.sof3as3.Bookstore.web;
 
 //import org.aspectj.weaver.NewConstructorTypeMunger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,7 +56,8 @@ public class BookController {
 	}
 	
 	// Delete Book
-	 @GetMapping(value = "/delete/{id}")
+	@GetMapping(value = "/delete/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	    public String deleteStudent(@PathVariable("id") Long bookId, Model model) {
 	    	repository.deleteById(bookId);
 	        return "redirect:../booklist";
@@ -63,6 +65,7 @@ public class BookController {
 
 	 // Add new book
 	@RequestMapping(value = "/add")
+	@PreAuthorize("hasAuthority('ADMIN')")
 		public String addBook(Model model) {
 			model.addAttribute("book", new Book());
 			model.addAttribute("categories", crepository.findAll());
@@ -70,6 +73,7 @@ public class BookController {
 		}
 	
 	// Save the new book
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("/save")
 		public String savebook(Book book) {
 			repository.save(book);
@@ -77,6 +81,7 @@ public class BookController {
 	}
 	
 	// Edit book
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping(value = "/edit/{id}")
 		public String editBook(@PathVariable("id") Long bookId, Model model) {
 			model.addAttribute("book", repository.findById(bookId));

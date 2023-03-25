@@ -7,13 +7,21 @@
 	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
-    <h1 class="text-center">Books</h1>
-
-	<h2 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h2>
+	<div class="container">
+	<div class="col-md-4">
+		<h1 class="text-center">Books</h1>
+	</div>
     
-	<form th:action="@{/logout}" method="post" >
-		<input type="submit" value="Sign Out" class="btn btn-danger"/>
-	</form>
+	<div class="col-md-4">
+		<h2 th:inline="text">Welcome <span sec:authentication="name"></span></h2>
+	</div>
+    
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post" >
+			<input type="submit" value="Sign Out" class="btn btn-danger"/>
+		</form>
+	</div>
+	
 
      <table class="table table-striped">
 		<tr>
@@ -22,8 +30,8 @@
 		    <th>ISBN</th>
 		    <th>Year</th>
 		    <th>Category</th>
-			<th sec:authorize="hasRole('ADMIN')"></th>
-			<th sec:authorize="hasRole('ADMIN')"></th>
+			<th sec:authorize="hasAuthority('ADMIN')"></th>
+			<th sec:authorize="hasAuthority('ADMIN')"></th>
 		</tr>  
     	<tr th:each = "book : ${books}">
     		<td th:text="${book.author}"></td>
@@ -31,12 +39,13 @@
     		<td th:text="${book.isbn}"></td>
     		<td th:text="${book.year}"></td>
 			<td th:text="${book.category.name}"></td>
- 			<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>   
+ 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>   
  			
- 			<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-success">Edit</a></td> 
+ 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-success">Edit</a></td> 
  					
     	</tr>
      </table>
-     <a sec:authorize="hasRole('ADMIN')" href="/add" class="btn btn-success">Add Book</a>
+     <a sec:authorize="hasAuthority('ADMIN')" href="/add" class="btn btn-success">Add Book</a>
+	</div>
 </body>
 </html>
