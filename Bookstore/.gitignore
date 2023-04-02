@@ -31,6 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+.vscode
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,maven,java
@@ -43,8 +44,7 @@ tmp/
 *.tmp
 *.bak
 *.swp
-*~.nib
-local.properties
+
 .settings/
 .loadpath
 .recommenders
